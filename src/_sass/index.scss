@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+
+
+// Our variables
+$base-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:   18px;
+$base-font-weight: 200;
+
+$head-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$head-font-weight: 100;
+
+$small-font-size:  $base-font-size * 0.875;
+$medium-font-size: $base-font-size * 1.25;
+$large-font-size:  $base-font-size * 2;
+$base-line-height: 1.8rem;
+
+$spacing-unit:     2rem;
+
+$text-color:       #111;
+// $background-color: #fdfdfd;
+$background-colour: #fff;
+$brand-colour:     #C4FFDA;
+$contrast-colour: #1B9991;
+
+$link-colour: lighten($brand-colour, 25%);
+
+$grey-colour:       rgb(52, 32, 42);
+$grey-colour-light: lighten($grey-colour, 30%);
+$grey-colour-dark:  darken($grey-colour, 10%);
+
+$gap-size: 10px;
+
+$small-break:          400px;
+$medium-break:         600px;
+$large-break:          1000px;
+
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+@mixin media-query($device) {
+    @media screen and (min-width: $device) {
+        @content;
+    }
+}
+
+
+
+// Import partials
+@import
+        "partials/reset",
+        "partials/base",
+        "partials/layout",
+        "partials/sections"
+;
