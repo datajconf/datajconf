@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+}
+
+h1 {
+    font-family: $head-font-family;
+    font-weight: $head-font-weight;
+    font-size: $large-font-size;
+    color: $contrast-colour;
+}
+
+h2, h3 {
+    font-size: $medium-font-size;
+    color: $contrast-colour;
+}
+
+.button {
+  padding: 12px 20px;
+  margin-bottom: $spacing-unit;
+  background-color: $contrast-colour;
+  border: 1px solid $brand-colour;
+  color: $brand-colour;
+  text-decoration:none;
+  margin-left: $spacing-unit/2;
+  font-size: $medium-font-size;
+
+  &:hover,
+  &:focus {
+    background-color: darken($contrast-colour, 25%);
+  }
+}

@@ -1,0 +1,38 @@
+    <footer id="past">
+        <div class="layer">
+            <div class="wrapper">
+                <p>Previously:</p>
+                <ul>
+                    {%- for previous in past -%}
+                        <li><a href="{{previous.url}}">{{ previous.year }} (<a href="{{ previous.proceedings }}">Proceedings</a>)</a></li>
+                    {%- endfor -%}
+                </ul>
+                <p>Image Credits:</p>
+                <ul>
+                    <li><a href="https://pixabay.com/en/microphone-audio-voice-auditorium-1206364/">Microphone</a> - <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a> by <a href="https://pixabay.com/en/users/HugoAtaide-2073435/">HugoAtaide</a></li>
+                    <li><a href="https://flickr.com/photos/75487768@N04/27292812636/">London</a> - <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0</a> by <a href="https://flickr.com/photos/75487768@N04/">barnyz</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        window.twttr = (function (d, s, id) {
+            var js,
+                fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        })(document, "script", "twitter-wjs");
+    </script>
