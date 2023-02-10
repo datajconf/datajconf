@@ -34,5 +34,7 @@ h1, h2 {
 
 
 @include media-query($medium-break) {
-
+    .wrapper {
+        max-width: 90%;
+    }
 }

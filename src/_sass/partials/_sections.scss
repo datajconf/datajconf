@@ -92,6 +92,22 @@
         }
 }
 
+@include media-query($medium-break) {
+
+    .hero {
+        h1 {
+            font-size: $medium-font-size;
+        }
+    }
+
+    .info {
+        grid-row: 4/6;
+        .card {
+            width: 33%;
+        }
+    }
+}
+
 
 
 #conference {
@@ -105,6 +121,18 @@
 
     p {
         margin-bottom: calc($spacing-unit*2);
+    }
+}
+
+#cfp {
+    ul {
+        margin-left: 40px;
+    }
+}
+
+#committee {
+    ul {
+        margin-left: 40px;
     }
 }
 
