@@ -1,45 +1,26 @@
     <footer id="past">
-        <div class="layer">
-            <div class="wrapper">
-                <p>Past European Data and Computational Journalism Conferences:</p>
-                <ul>
-                    {%- for previous in past -%}
-                        <li><a href="{{previous.url}}">{{ previous.year }} - {{ previous.location }}</a> (<a href="{{ previous.proceedings }}">Proceedings</a>)</li>
-                    {%- endfor -%}
-                </ul>
-                <p>Past Computation+Journalism Conferences:</p>
-                <ul>
-                    {%- for previous in cj -%}
-                        <li><a href="{{previous.url}}">{{ previous.year }} - {{ previous.location }}</a></li>
-                    {%- endfor -%}
-                </ul>
-                <p>Image Credits:</p>
-                <ul>
-                    <li><a href="https://pixabay.com/en/microphone-audio-voice-auditorium-1206364/">Microphone</a> - <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a> by <a href="https://pixabay.com/en/users/HugoAtaide-2073435/">HugoAtaide</a></li>
-                    <li><a href="https://ethz.ch/en/news-and-events/media-information/images/standort-eth-zentrum.html">Aerial view, ETH Zurich, Zentrum</a> - © ETH Zurich / Alessandro Della Bella</li>
-                    <li><a href="https://ethz.ch/content/dam/ethz/common/images/Medienbilder/standort/eth_zentrum/hires-pics-standort-zentrum/sta_zentrum_luftbild_002.zip">Aerial view, ETH Zurich, Zentrum</a> - © ETH Zurich / Emanuel Ammon</li>
-                </ul>
-            </div>
+        <div class="datajconf card">
+            <h3>Past European Data and Computational Journalism Conferences</h3>
+            <ul>
+                {%- for previous in past -%}
+                    <li><a href="{{previous.url}}">{{ previous.year }} - {{ previous.location }}</a> (<a href="{{ previous.proceedings }}">Proceedings</a>)</li>
+                {%- endfor -%}
+            </ul>
         </div>
-
+        <div class="cj card">
+            <h3>Past Computation+Journalism Conferences</h3>
+            <ul>
+                {%- for previous in cj -%}
+                    <li><a href="{{previous.url}}">{{ previous.year }} - {{ previous.location }}</a></li>
+                {%- endfor -%}
+            </ul>
+        </div>
+        <div class="credits card">
+            <h3>Image Credits</h3>
+            <ul>
+                <li><a href="https://pixabay.com/en/microphone-audio-voice-auditorium-1206364/">Microphone</a> - <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a> by <a href="https://pixabay.com/en/users/HugoAtaide-2073435/">HugoAtaide</a></li>
+                <li><a href="https://ethz.ch/en/news-and-events/media-information/images/standort-eth-zentrum.html">Aerial view, ETH Zurich, Zentrum</a> - © ETH Zurich / Alessandro Della Bella</li>
+                <li><a href="https://ethz.ch/content/dam/ethz/common/images/Medienbilder/standort/eth_zentrum/hires-pics-standort-zentrum/sta_zentrum_luftbild_002.zip">Aerial view, ETH Zurich, Zentrum</a> - © ETH Zurich / Emanuel Ammon</li>
+            </ul>
+        </div>
     </footer>
-
-    <script>
-        window.twttr = (function (d, s, id) {
-            var js,
-                fjs = d.getElementsByTagName(s)[0],
-                t = window.twttr || {};
-            if (d.getElementById(id)) return t;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://platform.twitter.com/widgets.js";
-            fjs.parentNode.insertBefore(js, fjs);
-
-            t._e = [];
-            t.ready = function (f) {
-                t._e.push(f);
-            };
-
-            return t;
-        })(document, "script", "twitter-wjs");
-    </script>

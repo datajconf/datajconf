@@ -2,9 +2,10 @@
 
 
 #splash {
+        min-height: 90vh;
         display: grid;
         grid-template-columns: 2fr 1fr 60% 1fr 2fr;
-        grid-template-rows: 10% 40% 1fr 20% 2fr;
+        grid-template-rows: 10% 40% 1fr 18% 2fr;
 
 
         .overlay {
@@ -91,9 +92,9 @@
         }
 }
 
+
+
 #conference {
-    max-width: 50%;
-    margin: auto;
 
     img {
         max-width: 100%;
@@ -101,9 +102,31 @@
     .centred {
         text-align: center;
     }
+
+    p {
+        margin-bottom: calc($spacing-unit*2);
+    }
 }
 
 #past {
-    background-color: rgba($grey-colour-dark, 0.4);
+    border-top: $spacing-unit solid $brand-secondary;
+    padding: $spacing-unit;
+    background-color: $brand-main;
+    color: $white-colour;
+    display: flex;
+
+    .card {
+        flex: 1 1 0;
+        padding: $spacing-unit;
+    }
+
+    li{
+        list-style: none;
+    }
+
+    a {
+    color: $white-colour;
+    text-decoration: underline;
+    }
 }
 

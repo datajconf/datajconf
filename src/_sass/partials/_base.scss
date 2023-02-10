@@ -9,6 +9,10 @@ body {
     line-height: $base-line-height;
 }
 
+strong {
+  font-weight: $bold-font-weight;
+}
+
 h1 {
     font-family: $head-font-family;
     font-weight: $head-font-weight;
