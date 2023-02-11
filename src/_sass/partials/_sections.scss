@@ -5,7 +5,12 @@
         min-height: 90vh;
         display: grid;
         grid-template-columns: 2fr 1fr 60% 1fr 2fr;
-        grid-template-rows: 10% 40% 1fr 18% 2fr;
+        grid-template-rows: 10% 40% 1fr minmax(100px, 35%) 1fr;
+
+        @include media-query($medium-break) {
+            min-height: 100vh;
+            grid-template-rows: 8% 40% 1fr minmax(20%, 55%) 1fr;
+            }
 
 
         .overlay {
@@ -20,12 +25,19 @@
             grid-column: 1 / 6;
             grid-row: 1 / 2;
 
+            @include media-query($medium-break) {
+                nav {
+                    text-align: center;
+                }
+            }
+
             nav {
                 padding-left: $spacing-unit;
                 padding-right: $spacing-unit;
                 padding-top: $spacing-unit;
                 text-align: right;
                 font-size: $small-font-size;
+
 
                 ul {
                     margin-left: 0;
@@ -44,6 +56,12 @@
                     width: 25vw;
                     max-width: 25vw;
                     float: left;
+                }
+
+                @include media-query($medium-break) {
+                    .logo {
+                        display: none;
+                    }
                 }
             }
 
@@ -64,11 +82,23 @@
                 align-self: center;
             }
 
+            @include media-query($medium-break) {
+                img {
+                    display: none;
+                }
+            }
+
             h1 {
                 align-self: center;
                 color: $white-colour;
                 font-size: $large-font-size;
                 font-weight: $bold-font-weight;
+                margin-left: $spacing-unit;
+            }
+            @include media-query($medium-break) {
+                h1 {
+                    font-size: $medium-font-size;
+                }
             }
         }
 
@@ -79,6 +109,7 @@
             background-color: $brand-main;
             border-bottom: $spacing-unit solid $brand-secondary;
             justify-content: center;
+            padding-bottom: calc(4*$spacing-unit);
 
             .card  {
                 width: 25%;
@@ -90,6 +121,19 @@
                 }
             }
         }
+
+            @include media-query($medium-break) {
+                .info {
+                flex-direction: column;
+                   font-size: $small-font-size;
+
+
+                   .card {
+                    width:90%;
+                    margin:auto;
+                   }
+                }
+            }
 }
 
 @include media-query($medium-break) {
