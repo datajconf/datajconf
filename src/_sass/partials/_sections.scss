@@ -5,7 +5,8 @@
         min-height: 90vh;
         display: grid;
         grid-template-columns: 2fr 1fr 60% 1fr 2fr;
-        grid-template-rows: 10% 40% 1fr minmax(100px, 35%) 1fr;
+        grid-template-rows: 10% 40% 10%;
+        grid-auto-rows: 1fr;
 
         @include media-query($medium-break) {
             min-height: 100vh;
@@ -60,7 +61,7 @@
 
                 @include media-query($medium-break) {
                     .logo {
-                        display: none;
+                            display: none;
                     }
                 }
             }
@@ -74,7 +75,7 @@
             padding-right: calc($spacing-unit/2);
             line-height: calc(1.3 * $base-line-height);
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             text-align: left;
 
             img {
@@ -84,7 +85,7 @@
 
             @include media-query($medium-break) {
                 img {
-                    display: none;
+                    max-height: 20vh;
                 }
             }
 
@@ -93,11 +94,13 @@
                 color: $white-colour;
                 font-size: $large-font-size;
                 font-weight: $bold-font-weight;
-                margin-left: $spacing-unit;
+                margin-left: calc(4*$spacing-unit);
             }
             @include media-query($medium-break) {
                 h1 {
                     font-size: $medium-font-size;
+                    line-height: normal;
+                    margin-left: calc(2*$spacing-unit);
                 }
             }
         }
@@ -136,21 +139,21 @@
             }
 }
 
-@include media-query($medium-break) {
+// @include media-query($medium-break) {
 
-    .hero {
-        h1 {
-            font-size: $medium-font-size;
-        }
-    }
+//     .hero {
+//         h1 {
+//             font-size: $medium-font-size;
+//         }
+//     }
 
-    .info {
-        grid-row: 4/6;
-        .card {
-            width: 33%;
-        }
-    }
-}
+//     .info {
+//         grid-row: 4/6;
+//         .card {
+//             width: 33%;
+//         }
+//     }
+// }
 
 
 
@@ -200,5 +203,11 @@
     color: $white-colour;
     text-decoration: underline;
     }
+}
+
+@include media-query($medium-break) {
+    #past {
+        flex-direction: column;
+     }
 }
 
