@@ -25,3 +25,22 @@ h2, h3 {
     color: $brand-secondary;
 }
 
+.button {
+  padding: 12px 20px;
+  margin-bottom: $spacing-unit;
+  background-color: $brand-secondary;
+  border: 1px solid $brand-main;
+  color: $brand-main;
+  text-decoration: none;
+  margin-left: $spacing-unit;
+  font-size: $medium-font-size;
+
+  &:hover,
+  &:focus {
+    background-color: darken($brand-secondary, 25%);
+  }
+
+    @include media-query($medium-break) {
+        font-size: $small-font-size;
+    }
+}
