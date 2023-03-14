@@ -34,6 +34,7 @@ h2, h3 {
   text-decoration: none;
   margin-left: $spacing-unit;
   font-size: $medium-font-size;
+  white-space: nowrap;
 
   &:hover,
   &:focus {
