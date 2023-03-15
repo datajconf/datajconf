@@ -7,6 +7,7 @@ body {
     font-weight: $base-font-weight;
     font-size: $base-font-size;
     line-height: $base-line-height;
+    -webkit-font-smoothing: antialiased;
 }
 
 strong {
@@ -23,18 +24,21 @@ h1 {
 h2, h3 {
     font-size: $medium-font-size;
     color: $brand-secondary;
+    margin-left: 0;
+    line-height: 1.4;
 }
 
 .button {
   padding: 12px 20px;
   margin-bottom: $spacing-unit;
   background-color: $brand-secondary;
-  border: 1px solid $brand-main;
   color: $brand-main;
   text-decoration: none;
-  margin-left: $spacing-unit;
-  font-size: $medium-font-size;
+  font-size: $small-font-size;
   white-space: nowrap;
+  display: inline-block;
+  transition: background-color 0.2s ease-in-out;
+  letter-spacing: 0.02em;
 
   &:hover,
   &:focus {
@@ -44,4 +48,8 @@ h2, h3 {
     @include media-query($medium-break) {
         font-size: $small-font-size;
     }
+}
+
+span.colored {
+  color: $brand-secondary;
 }
