@@ -210,6 +210,8 @@
     font-weight: bold;
     font-size: $medium-font-size;
     padding-right: calc(5*$spacing-unit);
+    font-size: clamp(18px, 2vw, 20px);
+    line-height: 1.2;
 
     @include media-query($medium-break) {
         grid-column: 2/12;
@@ -231,7 +233,8 @@ ul.list-blocks{
     grid-column: 5/9;
     color: $brand-main;
     font-size: $medium-font-size;
-    line-height: 1.4;
+    line-height: 1.5;
+    font-size: clamp(18px, 2vw, 20px);
 
     a {
         color: $brand-secondary;
@@ -292,13 +295,19 @@ ul.list-blocks{
 
             .speaker-name {
                 font-weight: bold;
+                line-height: 1.2;
+                margin-bottom: $spacing-unit;
+            }
+
+            .speaker-title {
+                line-height: 1.2;
             }
 
             .speaker-image-container {
                 background-color: $brand-main;
                 width: 100%;
                 max-width: 200px;
-                margin-bottom: $spacing-unit;
+                margin-bottom: calc(2*$spacing-unit);
 
                 img {
                     width: 100%;
@@ -462,8 +471,8 @@ footer {
         padding: calc(2*$spacing-unit);
         border-radius: 10px;
         color: $brand-main;
-        font-size: $medium-font-size;
-        line-height: 1.2;
+        line-height: 1.5;
+        font-size: clamp(18px, 2vw, 20px);
 
         a {
             color: $brand-secondary;
