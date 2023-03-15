@@ -209,6 +209,7 @@
     color: $brand-main;
     font-weight: bold;
     font-size: $medium-font-size;
+    padding-right: calc(5*$spacing-unit);
 
     @include media-query($medium-break) {
         grid-column: 2/12;
@@ -236,6 +237,14 @@ ul.list-blocks{
         color: $brand-secondary;
     }
 
+    @include media-query($extra-large-break) {
+        grid-column: 5/11;
+    }
+
+    @include media-query($large-break) {
+        grid-column: 5/11;
+    }
+
     @include media-query($medium-break) {
         grid-column: 2/12;
     }
@@ -246,7 +255,7 @@ ul.list-blocks{
 }
 
 .speaker {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.065);
     padding: calc(4*$spacing-unit) 0;
 
     .section-title {
