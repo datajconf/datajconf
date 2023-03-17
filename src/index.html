@@ -81,16 +81,18 @@ layout: base
             </div>
         </div>
     </section>
-    <section class="brand-secondary" id="speakers">
+    <section class="brand-main" id="speakers">
         <div class="speaker">
             <div class="wrapper">
                 <div class="section-title">Confirmed Speakers</div>
                 <div class="section-content">
                     <div class="speakers-list">
-                        <div class="speaker-portrait">
-                            <div class="speaker-image-container">
-                                <img src="img/speakers/gary_liu-nb.png" alt="This person does not exist">
+                        <div class="speaker-image-container">
+                            <div class="speaker-image-content">
+                            <img src="img/speakers/gary_liu-nb.png" alt="This person does not exist">
                             </div>
+                        </div>
+                        <div class="speaker-portrait">
                             <div class="speaker-name">Gary Liu</div>
                             <div class="speaker-title">Former CEO of the South China Morning Post</div>
                         </div>
@@ -117,10 +119,12 @@ layout: base
                 <div class="section-title"></div>
                 <div class="section-content">
                     <div class="speakers-list">
-                        <div class="speaker-portrait">
-                            <div class="speaker-image-container">
-                                <img src="img/speakers/uli_koppen-nb.png" alt="This person does not exist">
+                        <div class="speaker-image-container">
+                            <div class="speaker-image-content">
+                            <img src="img/speakers/uli_koppen-nb.png" alt="This person does not exist">
                             </div>
+                        </div>
+                        <div class="speaker-portrait">
                             <div class="speaker-name">Uli Köppen</div>
                             <div class="speaker-title">Head of AI + Automation Lab BR (German Public Broadcaster) and
                                 co-Head of BR Data, Investigative data unit</div>
@@ -147,10 +151,12 @@ layout: base
                 <div class="section-title"></div>
                 <div class="section-content">
                     <div class="speakers-list">
-                        <div class="speaker-portrait">
-                            <div class="speaker-image-container">
-                                <img src="img/speakers/fredrik_karen-nb.png" alt="This person does not exist">
+                        <div class="speaker-image-container">
+                            <div class="speaker-image-content">
+                            <img src="img/speakers/fredrik_karen-nb.png" alt="This person does not exist">
                             </div>
+                        </div>
+                        <div class="speaker-portrait">
                             <div class="speaker-name">Fredrik Karén</div>
                             <div class="speaker-title">SVP Editorial (digital transformation) Schibsted</div>
                         </div>
@@ -170,10 +176,12 @@ layout: base
                 <div class="section-title"></div>
                 <div class="section-content">
                     <div class="speakers-list">
-                        <div class="speaker-portrait">
-                            <div class="speaker-image-container">
-                                <img src="img/speakers/karen_hao-nb.png" alt="This person does not exist">
+                        <div class="speaker-image-container">
+                            <div class="speaker-image-content">
+                            <img src="img/speakers/karen_hao-nb.png" alt="This person does not exist">
                             </div>
+                        </div>
+                        <div class="speaker-portrait">
                             <div class="speaker-name">Karen Hao</div>
                             <div class="speaker-title">AI Reporter and WSJ tech correspondent in China</div>
                         </div>
@@ -205,11 +213,13 @@ layout: base
                 <div class="section-title"></div>
                 <div class="section-content">
                     <div class="speakers-list">
-                        <div class="speaker-portrait">
-                            <div class="speaker-image-container">
-                                <img src="img/speakers/ryan_cotterell-nb.png"
-                                    alt="This person does not exist">
+                        <div class="speaker-image-container">
+                            <div class="speaker-image-content">
+                            <img src="img/speakers/ryan_cotterell-nb.png"
+                                alt="This person does not exist">
                             </div>
+                        </div>
+                        <div class="speaker-portrait">
                             <div class="speaker-name">Ryan Cotterell</div>
                             <div class="speaker-title">Tenure-track assistant professor at ETH Zurich in the Department of Computer Science, ans</div>
                         </div>
@@ -257,10 +267,10 @@ layout: base
                 </p>
             </div>
         </div>
-    </section>
-    <section class="brand-main">
+    <!-- </section>
+    <section> -->
         <div class="wrapper">
-            <div class="message">
+            <div class="section-content">
                 <p>
                     You may contribute to the conference in different ways. You can propose an <strong>academic
                         paper</strong>, a <strong>contributed talk</strong>, a
@@ -271,6 +281,7 @@ layout: base
                 </p>
             </div>
         </div>
+        <br>
         <div class="wrapper">
             <div class="section-content">
                 <p><strong>Topics of interest include, but are not limited to:</strong></p>
@@ -356,13 +367,20 @@ layout: base
                         <div><a href="https://www.twitter.com/intent/user?screen_name=mtc_eth"
                                 target="_blank">@mtc_eth</a></div>
                         <div>Managing Director, Media Technology Center, ETH Zurich, Switzerland</div>
-                        <div class="speaker-name" style="margin-top:20px;">Titus Plattner</div>
+                        
+                        <div style="margin-top:20px;" class="speaker-image-container">
+                            <img src="img/organisers/titus_plattner-nb.png" alt="Fabio Zund">
+                        </div>
+                        <div class="speaker-name">Titus Plattner</div>
                         <div><a href="https://www.twitter.com/intent/user?screen_name=titusplattner"
                                 target="_blank">@titusplattner</a></div>
                         <div>Innovation project manager, Tamedia, Switzerland</div>
                     </div>
                     <div>Web Editor</div>
                     <div>
+                        <div style="margin-top:20px;" class="speaker-image-container">
+                            <img src="img/organisers/martin_chorley-nb.png" alt="Fabio Zund">
+                        </div>
                         <div class="speaker-name">Martin Chorley</div>
                         <div>Senior Lecturer (Associate Professor) in the School of Computer Science & Informatics at
                             Cardiff University</div>
@@ -521,7 +539,7 @@ layout: base
             <div class="section-content">
                 <div class="speakers-list">
                     <div>C+J Symposium</div>
-                    <div>
+                    <div class="people">
                         <div><div>Nick Diakopoulos</div><div>Northwestern University</div></div>
                         <div><div>Mark Hansen</div><div>Columbia University</div></div>
                         <div><div>Alberto Cairo</div><div>University of Miami</div></div>
@@ -533,10 +551,10 @@ layout: base
 
 
                     <div>DataJConf</div>
-                    <div>
-                        <div>Bahareh Heravi</div><div>University of Surrey</div>
-                        <div>Martin Chorley</div><div>Cardiff University</div>
-                        <div>Glyn Mottershead</div><div>City University London</div>
+                    <div class="people">
+                        <div><div>Bahareh Heravi</div><div>University of Surrey</div></div>
+                        <div><div>Martin Chorley</div><div>Cardiff University</div></div>
+                        <div><div>Glyn Mottershead</div><div>City University London</div></div>
                     </div>
                 </div>
             </div>

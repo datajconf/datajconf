@@ -42,7 +42,7 @@ h2, h3 {
 
   &:hover,
   &:focus {
-    background-color: darken($brand-secondary, 25%);
+    background-color: lighten($brand-secondary, 10%);
   }
 
     @include media-query($medium-break) {

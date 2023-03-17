@@ -209,7 +209,6 @@
 
 .section-title {
     grid-column: 3/5;
-    color: $brand-main;
     font-weight: bold;
     font-size: $medium-font-size;
     padding-right: calc(5*$spacing-unit);
@@ -262,7 +261,11 @@ ul.list-blocks{
 }
 
 .section-wide {
-    grid-column: 2/12;
+    grid-column: 3/11;
+
+    @include media-query($medium-break) {
+        grid-column: 2/12;
+    }
 }
 
 .sponsors {
@@ -274,7 +277,8 @@ ul.list-blocks{
 }
 
 .speaker {
-    padding: calc(1*$spacing-unit) 0;
+    padding: calc(3*$spacing-unit) 0;
+    border-top: 1px solid rgba(255,255,255,0.25);
 
     .section-title {
         display: none;
@@ -283,12 +287,19 @@ ul.list-blocks{
     &:first-child {
         .section-title {
             display: block;
+            margin-bottom: calc(5*$spacing-unit);
+
+            @include media-query($medium-break) {
+                margin-bottom: calc(4*$spacing-unit);
+            }
         }
     }
 
     .section-content {
         font-size: $font-small;
-        grid-column: 5/10;
+        grid-column: 3/11;
+        // border-top: 1px solid $brand-main;
+        // padding-top: calc(3*$spacing-unit);
 
         @include media-query($medium-break) {
             grid-column: 2/12;
@@ -297,12 +308,29 @@ ul.list-blocks{
 
     .speakers-list {
         display: grid;
-        grid-column-gap: calc(3*$spacing-unit);
-        grid-row-gap: calc(3*$spacing-unit);
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(7, 1fr);
+        grid-gap: calc(2*$spacing-unit);
+
+        .speaker-image-container {
+            width: 100%;
+            margin-bottom: calc(2*$spacing-unit);
+            grid-column: 1/3;
+
+        .speaker-image-content {
+            background-color: white;
+            max-width: 180px;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        }
 
         .speaker-portrait {
-            grid-column: 1/3;
+            grid-column: 3/5;
 
             @include media-query($medium-break) {
                 grid-column: 1/7;
@@ -316,22 +344,10 @@ ul.list-blocks{
             .speaker-title {
                 line-height: 1.2;
             }
-
-            .speaker-image-container {
-                background-color: $brand-main;
-                width: 100%;
-                max-width: 200px;
-                margin-bottom: calc(2*$spacing-unit);
-
-                img {
-                    width: 100%;
-                    display: block;
-                }
-            }
         }
 
         .speaker-details {
-            grid-column: 3/6;
+            grid-column: 5/11;
 
             @include media-query($medium-break) {
                 grid-column: 1/7;
@@ -368,18 +384,38 @@ ul.list-blocks{
         }
     }
     .speakers-list {
-        grid-template-columns: repeat(4, 1fr);
-        grid-column-gap: $spacing-unit;
-        grid-row-gap: $spacing-unit;
+        // grid-template-columns: repeat(4, 1fr);
+        // grid-column-gap: $spacing-unit;
+        // grid-row-gap: $spacing-unit;
+        display: block;
+        columns: 4;
+        column-gap: calc(4*$spacing-unit);
 
         div > div:first-child {
             font-weight: bold;
         }
 
+        div > div:last-child {
+            margin-bottom: $spacing-unit;
+        }
+
         @include media-query($medium-break) {
             grid-template-columns: 1fr;
+            columns: 1;
         }
     }
+}
+
+#organization {
+    .people {
+    div > div:first-child {
+        font-weight: bold;
+    }
+
+    div > div:last-child {
+        margin-bottom: $spacing-unit;
+    }
+}
 }
 
 .speakers-list {
@@ -424,7 +460,7 @@ ul.list-blocks{
     .speaker-image-container {
         width: 100%;
         max-width: 120px;
-        background-color: $brand-main;
+        background-color: white;
 
         img {
             width: 100%;
@@ -519,10 +555,20 @@ footer {
 }
 
 .blocks-list {
+    margin-top: calc(2*$spacing-unit);
     columns: 4;
+    column-gap: calc(4*$spacing-unit);
+    padding: calc(3*$spacing-unit);
+    background-color: white;
+    color: $brand-main;
+
+    @include media-query($medium-break) {
+        columns: 1;
+    }
 
     li {
         line-height: 1.2;
+        margin-bottom: $spacing-unit;
     }
     // display: grid;
     // grid-template-columns: repeat(4, 1fr);

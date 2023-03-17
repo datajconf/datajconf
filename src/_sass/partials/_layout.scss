@@ -19,6 +19,7 @@ h1, h2 {
 section {
     padding: calc(5*$spacing-unit) 0;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
+    color: $brand-main;
 
     &.no-border {
         border-top: none;
@@ -27,6 +28,10 @@ section {
     &.brand-main {
         background-color: $brand-main;
         color: $white-colour;
+
+        .section-title {
+            color: #f2ba08;
+        }
     }
 
     &.brand-secondary {
@@ -55,4 +60,10 @@ section {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     margin: auto;
+}
+
+.brand-main {
+    .section-content {
+        color: white;
+    }
 }
