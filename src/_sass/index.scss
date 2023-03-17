@@ -14,11 +14,18 @@ $medium-font-size: $base-font-size * 1.25;
 $large-font-size:  $base-font-size * 2;
 $base-line-height: 2rem;
 
+
+$font-small: clamp(18px, 1.2vw, 20px);
+$font-medium: clamp(18px, 1.65vw, 22px);
+$font-big: clamp(18px, 3vw, 30px);
+
+
 $spacing-unit:     10px;
 
 $text-color:        #111;
 $background-colour: #fff;
-$brand-main:        #1c202f;
+// $brand-main:        #1c202f;
+$brand-main:       #011588;
 $brand-secondary:   #F3B234;
 $dark-brand-main:   darken($brand-main, 20%);
 

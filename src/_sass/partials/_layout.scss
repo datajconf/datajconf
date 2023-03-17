@@ -12,6 +12,10 @@ h1, h2 {
     padding: $spacing-unit 0;
 }
 
+.programm-commitee {
+    grid-column: 1fr;
+}
+
 section {
     padding: calc(5*$spacing-unit) 0;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
