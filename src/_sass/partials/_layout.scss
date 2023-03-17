@@ -27,7 +27,11 @@ section {
 
     &.brand-main {
         background-color: $brand-main;
-        color: $white-colour;
+        color: rgba(255,255,255,0.9);
+
+        .section-content {
+            color: rgba(255,255,255,0.9);
+        }
 
         .section-title {
             color: #f2ba08;
@@ -60,10 +64,4 @@ section {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     margin: auto;
-}
-
-.brand-main {
-    .section-content {
-        color: white;
-    }
 }
