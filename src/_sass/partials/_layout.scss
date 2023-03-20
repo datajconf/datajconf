@@ -18,7 +18,7 @@ h1, h2 {
 
 section {
     padding: calc(5*$spacing-unit) 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid $brand-main;
     color: $brand-main;
 
     &.no-border {
@@ -64,4 +64,12 @@ section {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     margin: auto;
+}
+
+.line {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid $brand-main;
+    line-height: 1.2;
+    padding: $spacing-unit 0;
 }
