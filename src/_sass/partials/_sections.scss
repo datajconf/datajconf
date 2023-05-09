@@ -406,6 +406,7 @@ ul.list-blocks{
 
         > div {
             padding-right: calc(2*$spacing-unit);
+            display: inline-block;
         }
 
         div > div:first-child {
