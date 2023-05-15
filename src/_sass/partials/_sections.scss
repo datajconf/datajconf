@@ -281,6 +281,10 @@ ul.list-blocks{
     padding: calc(3*$spacing-unit) 0;
     border-top: 1px solid rgba(255,255,255,0.25);
 
+    &.transparent {
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
     .section-title {
         display: none;
     }
@@ -604,6 +608,10 @@ footer {
         color: $brand-secondary;
         text-decoration: none;
     }
+}
+
+.accomodation-block {
+    margin-bottom: 40px;
 }
 
 .blocks-list {
