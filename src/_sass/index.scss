@@ -24,7 +24,6 @@ $spacing-unit:     10px;
 
 $text-color:        #111;
 $background-colour: #fff;
-// $brand-main:        #1c202f;
 $brand-main:       #011588;
 $brand-secondary:   #F3B234;
 $dark-brand-main:   darken($brand-main, 20%);
@@ -33,8 +32,8 @@ $white-colour:      #eee;
 
 $link-colour: lighten($brand-main, 25%);
 
-$grey-colour:       rgb(52, 32, 42);
-$grey-colour-light: lighten($grey-colour, 30%);
+$grey-colour:       rgb(200, 204, 208);
+$grey-colour-light: lighten($grey-colour, 10%);
 $grey-colour-dark:  darken($grey-colour, 10%);
 
 $gap-size: 10px;
