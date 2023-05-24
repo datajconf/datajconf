@@ -299,7 +299,7 @@ header.header-page {
             grid-column: 4 / 8;
 
             &.open {
-                max-height: 2000px;
+                max-height: 20000px;
             }
 
             @include media-query($extra-large-break) {
