@@ -297,8 +297,10 @@ header.header-page {
             max-height: 0;
             overflow: hidden;
             grid-column: 4 / 8;
+            margin-top: 0;
 
             &.open {
+                margin-top: 1em;
                 max-height: 20000px;
             }
 
