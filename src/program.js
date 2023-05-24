@@ -181,11 +181,22 @@ var LikeButton = function LikeButton() {
         )
       )
     ),
-    items.filter(function (item) {
+    items.length > 0 ? items.filter(function (item) {
       return item.day.getDate() === selectedDate;
     }).map(function (item) {
       return React.createElement(ListItem, item);
-    })
+    }) : React.createElement(
+      "div",
+      { "class": "loading-container" },
+      React.createElement(
+        "div",
+        { "class": "lds-ring" },
+        React.createElement("div", null),
+        React.createElement("div", null),
+        React.createElement("div", null),
+        React.createElement("div", null)
+      )
+    )
   );
 };
 

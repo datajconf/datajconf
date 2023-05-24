@@ -120,11 +120,21 @@ const LikeButton = () => {
           </div>
         </div>
       </div>
-      {items
-        .filter((item) => item.day.getDate() === selectedDate)
-        .map((item) => (
-          <ListItem {...item} />
-        ))}
+
+      {items.length > 0 ? (
+        items
+          .filter((item) => item.day.getDate() === selectedDate)
+          .map((item) => <ListItem {...item} />)
+      ) : (
+        <div class="loading-container">
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
