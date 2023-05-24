@@ -1,6 +1,71 @@
 "use strict";
 import "./node_modules/d3-dsv/dist/d3-dsv.min.js";
 
+const locations = {
+  Tamedia: "Tamedia HQ",
+  ETH: "ETH Main Building",
+  Main: "Main Room (HG F1)",
+  Panel: "Panel Room (HG F26.3)",
+  "Workshop 1": "Workshop room 1",
+  "Workshop 2": "Workshop room 2",
+  "Main Hall": "HG Main Hall",
+};
+
+const ListItem = (item) => {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <div
+      class="program-item"
+      onClick={() => {
+        setOpen(!open);
+      }}
+    >
+      <div class="program-item-info">
+        <div class="program-item-time">
+          <div>{item.start}</div>
+          <div>{item.end}</div>
+        </div>
+        <div class="program-item-name">
+          <div class="program-item-name-category">{item.category}</div>
+          <div>
+            <strong>{item.title}</strong>
+          </div>
+          {item.venue && (
+            <div class="program-item-name-location">
+              <a
+                href={`${
+                  item.venue === "Tamedia"
+                    ? "https://www.google.com/maps/place/Tamedia+AG/@47.3724327,8.5280011,17z/data=!3m2!4b1!5s0x47900a0355f607ad:0x9e6b74d0b67c27b1!4m6!3m5!1s0x47900a04ab528945:0xdec90b5aaeef3f36!8m2!3d47.3724327!4d8.5305814!16s%2Fg%2F1w15ybqk"
+                    : "https://ethz.ch/en/campus/access/zentrum.html"
+                }`}
+              >
+                {locations[item.venue]}
+              </a>
+              {item.room ? `, ${locations[item.room]}` : ""}
+            </div>
+          )}
+        </div>
+        <div class="program-item-speaker">{item.speaker}</div>
+      </div>
+      {item.description.length > 2 && (
+        <div class={`program-item-description`}>
+          <div
+            class={`program-item-description-text ${open ? "open" : "close"}`}
+          >
+            {item.description}
+          </div>
+          <div class="program-item-expand-container">
+            <div class="program-item-expand">
+              {open ? "Close" : "Read more"}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const LikeButton = () => {
   const [items, setItems] = React.useState([]);
   const [selectedDate, setSelectedDate] = React.useState(22);
@@ -58,28 +123,7 @@ const LikeButton = () => {
       {items
         .filter((item) => item.day.getDate() === selectedDate)
         .map((item) => (
-          <div class="program-item">
-            <div class="program-item-info">
-              <div class="program-item-time">
-                {item.start} - {item.end}
-              </div>
-              <div class="program-item-name">
-                <div>{item.category}</div>
-                <div>
-                  <strong>{item.title}</strong>
-                </div>
-                <div>
-                  {item.venue} {item.room}
-                </div>
-              </div>
-              <div class="program-item-speaker">{item.speaker}</div>
-            </div>
-            <div class="program-item-description">
-              <div class="program-item-description-text">
-                {item.description}
-              </div>
-            </div>
-          </div>
+          <ListItem {...item} />
         ))}
     </div>
   );
