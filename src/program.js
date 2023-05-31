@@ -88,13 +88,19 @@ var ListItem = function ListItem(item) {
           });
 
           return twitterHandles && twitterHandles[i] ? React.createElement(
-            "a",
-            { href: "https://www.twitter.com/" + twitterHandles[i] },
-            s
-          ) : React.createElement(
-            "div",
+            "span",
             null,
-            s
+            React.createElement(
+              "a",
+              { href: "https://www.twitter.com/" + twitterHandles[i] },
+              s
+            ),
+            i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
+          ) : React.createElement(
+            "span",
+            null,
+            s,
+            i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
           );
         })
       )
