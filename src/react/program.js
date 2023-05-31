@@ -32,7 +32,9 @@ const ListItem = (item) => {
                 style={{ width: "25px", marginRight: "5px" }}
                 src={"/img/location-icon.svg"}
               />
+              <div>
               <a
+                target="_blank"
                 href={`${
                   item.venue === "Tamedia"
                     ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu"
@@ -42,6 +44,7 @@ const ListItem = (item) => {
                 {locations[item.venue]}
               </a>
               {item.room ? `, ${locations[item.room]}` : ""}
+              </div>
             </div>
           )}
         </div>
