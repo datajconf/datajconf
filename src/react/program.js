@@ -2,7 +2,7 @@
 import "./node_modules/d3-dsv/dist/d3-dsv.min.js";
 
 const locations = {
-  Tamedia: "Tamedia HQ",
+  Tamedia: "Tamedia HQ (TX Group)",
   ETH: "ETH Main Building",
   Main: "Main Room (HG F1)",
   Panel: "Panel Room (HG F26.3)",
@@ -15,12 +15,7 @@ const ListItem = (item) => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div
-      class="program-item"
-      onClick={() => {
-        setOpen(!open);
-      }}
-    >
+    <div class="program-item">
       <div class="program-item-info">
         <div class="program-item-time">
           <div>{item.start}</div>
@@ -33,10 +28,14 @@ const ListItem = (item) => {
           </div>
           {item.venue && (
             <div class="program-item-name-location">
+              <img
+                style={{ width: "25px", marginRight: "5px" }}
+                src={"/img/location-icon.svg"}
+              />
               <a
                 href={`${
                   item.venue === "Tamedia"
-                    ? "https://www.google.com/maps/place/Tamedia+AG/@47.3724327,8.5280011,17z/data=!3m2!4b1!5s0x47900a0355f607ad:0x9e6b74d0b67c27b1!4m6!3m5!1s0x47900a04ab528945:0xdec90b5aaeef3f36!8m2!3d47.3724327!4d8.5305814!16s%2Fg%2F1w15ybqk"
+                    ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu"
                     : "https://ethz.ch/en/campus/access/zentrum.html"
                 }`}
               >
@@ -46,7 +45,17 @@ const ListItem = (item) => {
             </div>
           )}
         </div>
-        <div class="program-item-speaker">{item.speaker}</div>
+        <div class="program-item-speaker">
+          {item.speaker.split(/,\s*|\sand\s/).map((s, i) => {
+            const twitterHandles = item.twitter.split(/,\s*|\sand\s/).map(h => h.replace(/^@/, ""))
+
+            return twitterHandles && twitterHandles[i] ? (
+              <a href={`https://www.twitter.com/${twitterHandles[i]}`}>{s}</a>
+            ) : (
+              <div>{s}</div>
+            );
+          })}
+        </div>
       </div>
       {item.description.length > 2 && (
         <div class={`program-item-description`}>
@@ -55,7 +64,12 @@ const ListItem = (item) => {
           >
             {item.description}
           </div>
-          <div class="program-item-expand-container">
+          <div
+            onClick={() => {
+              setOpen(!open);
+            }}
+            class="program-item-expand-container"
+          >
             <div class="program-item-expand">
               {open ? "Close" : "Read more"}
             </div>
@@ -124,7 +138,7 @@ const LikeButton = () => {
       {items.length > 0 ? (
         items
           .filter((item) => item.day.getDate() === selectedDate)
-          .map((item) => <ListItem {...item} />)
+          .map((item, i) => <ListItem key={`item-${selectedDate}-${i}`} {...item} />)
       ) : (
         <div class="loading-container">
           <div class="lds-ring">

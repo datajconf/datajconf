@@ -5,7 +5,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 import "./node_modules/d3-dsv/dist/d3-dsv.min.js";
 
 var locations = {
-  Tamedia: "Tamedia HQ",
+  Tamedia: "Tamedia HQ (TX Group)",
   ETH: "ETH Main Building",
   Main: "Main Room (HG F1)",
   Panel: "Panel Room (HG F26.3)",
@@ -22,12 +22,7 @@ var ListItem = function ListItem(item) {
 
   return React.createElement(
     "div",
-    {
-      "class": "program-item",
-      onClick: function onClick() {
-        setOpen(!open);
-      }
-    },
+    { "class": "program-item" },
     React.createElement(
       "div",
       { "class": "program-item-info" },
@@ -65,10 +60,14 @@ var ListItem = function ListItem(item) {
         item.venue && React.createElement(
           "div",
           { "class": "program-item-name-location" },
+          React.createElement("img", {
+            style: { width: "25px", marginRight: "5px" },
+            src: "/img/location-icon.svg"
+          }),
           React.createElement(
             "a",
             {
-              href: "" + (item.venue === "Tamedia" ? "https://www.google.com/maps/place/Tamedia+AG/@47.3724327,8.5280011,17z/data=!3m2!4b1!5s0x47900a0355f607ad:0x9e6b74d0b67c27b1!4m6!3m5!1s0x47900a04ab528945:0xdec90b5aaeef3f36!8m2!3d47.3724327!4d8.5305814!16s%2Fg%2F1w15ybqk" : "https://ethz.ch/en/campus/access/zentrum.html")
+              href: "" + (item.venue === "Tamedia" ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu" : "https://ethz.ch/en/campus/access/zentrum.html")
             },
             locations[item.venue]
           ),
@@ -78,7 +77,21 @@ var ListItem = function ListItem(item) {
       React.createElement(
         "div",
         { "class": "program-item-speaker" },
-        item.speaker
+        item.speaker.split(/,\s*|\sand\s/).map(function (s, i) {
+          var twitterHandles = item.twitter.split(/,\s*|\sand\s/).map(function (h) {
+            return h.replace(/^@/, "");
+          });
+
+          return twitterHandles && twitterHandles[i] ? React.createElement(
+            "a",
+            { href: "https://www.twitter.com/" + twitterHandles[i] },
+            s
+          ) : React.createElement(
+            "div",
+            null,
+            s
+          );
+        })
       )
     ),
     item.description.length > 2 && React.createElement(
@@ -93,7 +106,12 @@ var ListItem = function ListItem(item) {
       ),
       React.createElement(
         "div",
-        { "class": "program-item-expand-container" },
+        {
+          onClick: function onClick() {
+            setOpen(!open);
+          },
+          "class": "program-item-expand-container"
+        },
         React.createElement(
           "div",
           { "class": "program-item-expand" },
@@ -183,8 +201,8 @@ var LikeButton = function LikeButton() {
     ),
     items.length > 0 ? items.filter(function (item) {
       return item.day.getDate() === selectedDate;
-    }).map(function (item) {
-      return React.createElement(ListItem, item);
+    }).map(function (item, i) {
+      return React.createElement(ListItem, Object.assign({ key: "item-" + selectedDate + "-" + i }, item));
     }) : React.createElement(
       "div",
       { "class": "loading-container" },

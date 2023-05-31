@@ -253,6 +253,8 @@ header.header-page {
             .program-item-name-location {
                 font-size: 0.85em;
                 margin-top: .65em;
+                display: flex;
+                align-items: center;
             }
 
             @include media-query($extra-large-break) {
