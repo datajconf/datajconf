@@ -53,7 +53,7 @@ const ListItem = (item) => {
             const twitterHandles = item.twitter.split(/,\s*|\sand\s/).map(h => h.replace(/^@/, ""))
 
             return twitterHandles && twitterHandles[i] ? (
-              <span><a href={`https://www.twitter.com/${twitterHandles[i]}`}>{s}</a>{i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}</span>
+              <span><a target="_blank" href={`https://www.twitter.com/${twitterHandles[i]}`}>{s}</a>{i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}</span>
             ) : (
               <span>{s}{i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}</span>
             );

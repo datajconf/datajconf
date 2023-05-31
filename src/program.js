@@ -92,7 +92,7 @@ var ListItem = function ListItem(item) {
             null,
             React.createElement(
               "a",
-              { href: "https://www.twitter.com/" + twitterHandles[i] },
+              { target: "_blank", href: "https://www.twitter.com/" + twitterHandles[i] },
               s
             ),
             i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
