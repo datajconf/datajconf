@@ -542,6 +542,12 @@ ul.list-blocks{
 
     &.yellow {
         background-color: $brand-secondary;
+        color: $brand-main;
+
+        a {
+            color: $brand-main;
+            text-decoration: underline;
+        }
     }
 
     @include media-query($medium-break) {
