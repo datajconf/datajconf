@@ -250,13 +250,6 @@ header.header-page {
                 margin-bottom: .65em;
             }
 
-            .program-item-name-location {
-                font-size: 0.85em;
-                margin-top: .65em;
-                display: flex;
-                align-items: center;
-            }
-
             @include media-query($extra-large-break) {
                 grid-column: 4 / 8;
             }
@@ -346,6 +339,13 @@ header.header-page {
             }
         }
     }
+}
+
+.program-item-name-location {
+    font-size: 0.85em;
+    margin-top: .65em;
+    display: flex;
+    align-items: center;
 }
 
 .date-menu-container {

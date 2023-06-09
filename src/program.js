@@ -92,7 +92,10 @@ var ListItem = function ListItem(item) {
             null,
             React.createElement(
               "a",
-              { target: "_blank", href: "https://www.twitter.com/" + twitterHandles[i] },
+              {
+                target: "_blank",
+                href: "https://www.twitter.com/" + twitterHandles[i]
+              },
               s
             ),
             i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
@@ -102,7 +105,24 @@ var ListItem = function ListItem(item) {
             s,
             i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
           );
-        })
+        }),
+        item.paper && React.createElement(
+          "div",
+          { "class": "program-item-name-location" },
+          React.createElement("img", {
+            style: { width: "25px", marginRight: "5px" },
+            src: "/img/paper-icon.svg"
+          }),
+          React.createElement(
+            "div",
+            null,
+            React.createElement(
+              "a",
+              { target: "_blank", href: "../papers/" + item.paper },
+              "Read the paper"
+            )
+          )
+        )
       )
     ),
     item.description.length > 2 && React.createElement(

@@ -33,31 +33,57 @@ const ListItem = (item) => {
                 src={"/img/location-icon.svg"}
               />
               <div>
-              <a
-                target="_blank"
-                href={`${
-                  item.venue === "Tamedia"
-                    ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu"
-                    : "https://ethz.ch/en/campus/access/zentrum.html"
-                }`}
-              >
-                {locations[item.venue]}
-              </a>
-              {item.room ? `, ${locations[item.room]}` : ""}
+                <a
+                  target="_blank"
+                  href={`${
+                    item.venue === "Tamedia"
+                      ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu"
+                      : "https://ethz.ch/en/campus/access/zentrum.html"
+                  }`}
+                >
+                  {locations[item.venue]}
+                </a>
+                {item.room ? `, ${locations[item.room]}` : ""}
               </div>
             </div>
           )}
         </div>
         <div class="program-item-speaker">
           {item.speaker.split(/,\s*|\sand\s/).map((s, i) => {
-            const twitterHandles = item.twitter.split(/,\s*|\sand\s/).map(h => h.replace(/^@/, ""))
+            const twitterHandles = item.twitter
+              .split(/,\s*|\sand\s/)
+              .map((h) => h.replace(/^@/, ""));
 
             return twitterHandles && twitterHandles[i] ? (
-              <span><a target="_blank" href={`https://www.twitter.com/${twitterHandles[i]}`}>{s}</a>{i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}</span>
+              <span>
+                <a
+                  target="_blank"
+                  href={`https://www.twitter.com/${twitterHandles[i]}`}
+                >
+                  {s}
+                </a>
+                {i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}
+              </span>
             ) : (
-              <span>{s}{i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}</span>
+              <span>
+                {s}
+                {i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}
+              </span>
             );
           })}
+          {item.paper && (
+            <div class="program-item-name-location">
+              <img
+                style={{ width: "25px", marginRight: "5px" }}
+                src={"/img/paper-icon.svg"}
+              />
+              <div>
+                <a target="_blank" href={`../papers/${item.paper}`}>
+                  Read the paper
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {item.description.length > 2 && (
@@ -141,7 +167,9 @@ const LikeButton = () => {
       {items.length > 0 ? (
         items
           .filter((item) => item.day.getDate() === selectedDate)
-          .map((item, i) => <ListItem key={`item-${selectedDate}-${i}`} {...item} />)
+          .map((item, i) => (
+            <ListItem key={`item-${selectedDate}-${i}`} {...item} />
+          ))
       ) : (
         <div class="loading-container">
           <div class="lds-ring">
