@@ -4,16 +4,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 import "./node_modules/d3-dsv/dist/d3-dsv.min.js";
 
-var locations = {
-  Tamedia: "Tamedia HQ (TX Group)",
-  ETH: "ETH Main Building",
-  Main: "Main Room (HG F1)",
-  Panel: "Panel Room (HG F26.3)",
-  "Workshop 1": "Workshop room 1",
-  "Workshop 2": "Workshop room 2",
-  "Main Hall": "HG Main Hall"
-};
-
 var ListItem = function ListItem(item) {
   var _React$useState = React.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -73,9 +63,9 @@ var ListItem = function ListItem(item) {
                 target: "_blank",
                 href: "" + (item.venue === "Tamedia" ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu" : "https://ethz.ch/en/campus/access/zentrum.html")
               },
-              locations[item.venue]
+              item.venue
             ),
-            item.room ? ", " + locations[item.room] : ""
+            item.room ? ", " + item.room : ""
           )
         )
       ),
