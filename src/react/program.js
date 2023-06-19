@@ -1,22 +1,6 @@
 "use strict";
 import "./node_modules/d3-dsv/dist/d3-dsv.min.js";
 
-const locations = {
-  Tamedia: "Tamedia HQ (TX Group)",
-  ETH: "ETH Main Building",
-  Main: "Main Room (HG F1)",
-  Panel: "Panel Room (HG F26.3)",
-  "Workshop 1": "Workshop room 1",
-  "Workshop 2": "Workshop room 2",
-  "Main Hall": "HG Main Hall",
-  "Matterhorn 1+2": "Matterhorn 1+2",
-  "Matterhorn 1": "Matterhorn 1",
-  "Presseclub": "Presseclub",
-  "Monte Tamaro": "Monte Tamaro",
-  "Main entrance": "Main entrance",
-
-};
-
 const ListItem = (item) => {
   const [open, setOpen] = React.useState(false);
 
@@ -47,9 +31,9 @@ const ListItem = (item) => {
                       : "https://ethz.ch/en/campus/access/zentrum.html"
                   }`}
                 >
-                  {locations[item.venue]}
+                  {item.venue}
                 </a>
-                {item.room ? `, ${locations[item.room]}` : ""}
+                {item.room ? `, ${item.room}` : ""}
               </div>
             </div>
           )}
