@@ -9,6 +9,12 @@ const locations = {
   "Workshop 1": "Workshop room 1",
   "Workshop 2": "Workshop room 2",
   "Main Hall": "HG Main Hall",
+  "Matterhorn 1+2": "Matterhorn 1+2",
+  "Matterhorn 1": "Matterhorn 1",
+  "Presseclub": "Presseclub",
+  "Monte Tamaro": "Monte Tamaro",
+  "Main entrance": "Main entrance",
+
 };
 
 const ListItem = (item) => {
