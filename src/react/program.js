@@ -104,6 +104,14 @@ const LikeButton = () => {
   const [selectedDate, setSelectedDate] = React.useState(22);
 
   React.useEffect(() => {
+    const today  = new Date();
+
+    if (today.getDate() >= 22 && today.getDate() < 25 && today.getMonth() + 1 === 6 && today.getFullYear() === 2023) {
+      setSelectedDate(today.getDate());
+    } else {
+      setSelectedDate(22);
+    }
+
     fetch(
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbfoHgabkIB0vzYf9zQcCDYaMzCt3LT_iHUDuCYENraqGASDQ5IRnKC28y9Hgjyv8aSxI0OwK5r1xV/pub?output=csv"
     )
