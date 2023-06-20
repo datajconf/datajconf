@@ -219,6 +219,14 @@ header.header-page {
         text-decoration: underline;
     }
 
+    .room-name {
+        background-color: $brand-main;
+        color: white;
+        padding: .2em .5em;
+        border-radius: 6px;
+        margin-left: .5em;
+    }
+
     .program-item-info {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -238,7 +246,7 @@ header.header-page {
             }
         
             @include media-query($medium-break) {
-                grid-column: 2 / 11;
+                grid-column: 2 / 3;
             }
         }
         
@@ -250,6 +258,11 @@ header.header-page {
                 margin-bottom: .65em;
             }
 
+            .program-item-authors {
+                font-size: 0.85em;
+                margin-top: .65em;
+            }
+
             @include media-query($extra-large-break) {
                 grid-column: 4 / 8;
             }
@@ -259,24 +272,24 @@ header.header-page {
             }
 
             @include media-query($medium-break) {
-                grid-column: 2 / 11;
+                grid-column: 3 / 11;
             }
         }
         
         .program-item-speaker {
-            grid-column: 8 / 11;
+            grid-column: 9 / 12;
             font-size: 0.85em;
 
             @include media-query($extra-large-break) {
-                grid-column: 8 / 11;
+                grid-column: 9 / 12;
             }
         
             @include media-query($large-break) {
-                grid-column: 8 / 11;
+                grid-column: 9 / 12;
             }
 
             @include media-query($medium-break) {
-                grid-column: 2 / 11;
+                grid-column: 3 / 11;
             }
         }
     }
@@ -313,36 +326,49 @@ header.header-page {
         }
 
         .program-item-expand-container {
-            grid-column: 4 / 5;
+            grid-column: 4 / 11;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
 
             @include media-query($extra-large-break) {
-                grid-column: 4 / 5;
+                grid-column: 4 / 11;
             }
         
             @include media-query($large-break) {
-                grid-column: 4 / 5;
+                grid-column: 4 / 11;
             }
 
             @include media-query($medium-break) {
-                grid-column: 2 / 11;
+                grid-column: 4 / 11;
             }
 
             .program-item-expand {
                 background-color: $brand-secondary;
                 color: $brand-main;
-                padding: 6px 20px;
+                padding: 8px 16px;
                 border-radius: 20px;
-                font-size: 0.85em;
                 cursor: pointer;
-                display: inline-block;
+                display: inline-flex;
                 white-space: nowrap;
+                font-size: 0.85em;
+                justify-content: center;
+            }
+
+            .program-item-name-paper-link {
+                display: block;
+                font-size: 0.85em;
+                opacity: 0.75;
+
+                div  {
+                    display: inline-block;
+                }
             }
         }
     }
 }
 
 .program-item-name-location {
-    font-size: 0.85em;
     margin-top: .65em;
     display: flex;
     align-items: center;
@@ -352,25 +378,25 @@ header.header-page {
     display: flex;
     justify-content: center;
 
-.date-menu {
-    display: flex;
-    flex-direction: row;
-    margin-top: -100px;
+    .date-menu {
+        display: flex;
+        flex-direction: row;
+        margin-top: -100px;
 
-.date-item {
-    background-color: white;
-    padding: 6px 20px;
-    border-radius: 20px;
-    color: $brand-main;
-    margin: 1px;
-    cursor: pointer;
+        .date-item {
+            background-color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            color: $brand-main;
+            margin: 1px;
+            cursor: pointer;
 
-    &.selected {
-        color: $brand-main;
-        font-weight: 800;
+            &.selected {
+                color: $brand-main;
+                font-weight: 800;
+            }
+        }
     }
-}
-}
 }
 
 .loading-container {

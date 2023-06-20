@@ -3,6 +3,17 @@ import "./node_modules/d3-dsv/dist/d3-dsv.min.js";
 
 const ListItem = (item) => {
   const [open, setOpen] = React.useState(false);
+  const roomEls = item.room ? item.room.split(" (") : null;
+  const room = roomEls ? (
+    roomEls.length > 1 ? (
+      <div style={{ marginTop: ".25em" }}>
+        {roomEls[0]}
+        <span class="room-name">{roomEls[1].replace(")", "")}</span>
+      </div>
+    ) : (
+      <div style={{ marginTop: ".25em" }}>{roomEls[0]}</div>
+    )
+  ) : null;
 
   return (
     <div class="program-item">
@@ -12,10 +23,42 @@ const ListItem = (item) => {
           <div>{item.end}</div>
         </div>
         <div class="program-item-name">
-          <div class="program-item-name-category">{item.category}</div>
+          {item.category && (
+            <div class="program-item-name-category">{item.category}</div>
+          )}
           <div>
             <strong>{item.title}</strong>
           </div>
+          <div class="program-item-authors">
+            {item.speaker.split(/,\s*|\sand\s/).map((s, i) => {
+              const twitterHandles = item.twitter
+                .split(/,\s*|\sand\s/)
+                .map((h) => h.replace(/^@/, ""));
+
+              return twitterHandles && twitterHandles[i] ? (
+                <span>
+                  <a
+                    target="_blank"
+                    href={`https://www.twitter.com/${twitterHandles[i]}`}
+                  >
+                    {s}
+                  </a>
+                  {i < item.speaker.split(/,\s*|\sand\s/).length - 1
+                    ? ", "
+                    : ""}
+                </span>
+              ) : (
+                <span>
+                  {s}
+                  {i < item.speaker.split(/,\s*|\sand\s/).length - 1
+                    ? ", "
+                    : ""}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+        <div class="program-item-speaker">
           {item.venue && (
             <div class="program-item-name-location">
               <img
@@ -26,51 +69,14 @@ const ListItem = (item) => {
                 <a
                   target="_blank"
                   href={`${
-                    item.venue === "Tamedia"
+                    item.venue === "Tamedia HQ (TX Group)"
                       ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu"
                       : "https://ethz.ch/en/campus/access/zentrum.html"
                   }`}
                 >
                   {item.venue}
                 </a>
-                {item.room ? `, ${item.room}` : ""}
-              </div>
-            </div>
-          )}
-        </div>
-        <div class="program-item-speaker">
-          {item.speaker.split(/,\s*|\sand\s/).map((s, i) => {
-            const twitterHandles = item.twitter
-              .split(/,\s*|\sand\s/)
-              .map((h) => h.replace(/^@/, ""));
-
-            return twitterHandles && twitterHandles[i] ? (
-              <span>
-                <a
-                  target="_blank"
-                  href={`https://www.twitter.com/${twitterHandles[i]}`}
-                >
-                  {s}
-                </a>
-                {i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}
-              </span>
-            ) : (
-              <span>
-                {s}
-                {i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""}
-              </span>
-            );
-          })}
-          {item.paper && (
-            <div class="program-item-name-location">
-              <img
-                style={{ width: "25px", marginRight: "5px" }}
-                src={"/img/paper-icon.svg"}
-              />
-              <div>
-                <a target="_blank" href={`../papers/${item.paper}`}>
-                  Read the paper
-                </a>
+                {room ? room : ""}
               </div>
             </div>
           )}
@@ -90,8 +96,19 @@ const ListItem = (item) => {
             class="program-item-expand-container"
           >
             <div class="program-item-expand">
-              {open ? "Close" : "Read more"}
+              {open ? "⨯ Close" : "▼ Read more"}
             </div>
+            {item.paper && (
+              <div class="program-item-expand" style={{marginLeft: "0.5em"}}>
+                <img
+                  style={{ width: "15px", marginRight: "5px" }}
+                  src={"/img/paper-icon.svg"}
+                />
+                  <a target="_blank" href={`../papers/${item.paper}`}>
+                    Read the paper
+                  </a>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -104,9 +121,14 @@ const LikeButton = () => {
   const [selectedDate, setSelectedDate] = React.useState(22);
 
   React.useEffect(() => {
-    const today  = new Date();
+    const today = new Date();
 
-    if (today.getDate() >= 22 && today.getDate() < 25 && today.getMonth() + 1 === 6 && today.getFullYear() === 2023) {
+    if (
+      today.getDate() >= 22 &&
+      today.getDate() < 25 &&
+      today.getMonth() + 1 === 6 &&
+      today.getFullYear() === 2023
+    ) {
       setSelectedDate(today.getDate());
     } else {
       setSelectedDate(22);

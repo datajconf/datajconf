@@ -10,6 +10,22 @@ var ListItem = function ListItem(item) {
       open = _React$useState2[0],
       setOpen = _React$useState2[1];
 
+  var roomEls = item.room ? item.room.split(" (") : null;
+  var room = roomEls ? roomEls.length > 1 ? React.createElement(
+    "div",
+    { style: { marginTop: ".25em" } },
+    roomEls[0],
+    React.createElement(
+      "span",
+      { "class": "room-name" },
+      roomEls[1].replace(")", "")
+    )
+  ) : React.createElement(
+    "div",
+    { style: { marginTop: ".25em" } },
+    roomEls[0]
+  ) : null;
+
   return React.createElement(
     "div",
     { "class": "program-item" },
@@ -33,7 +49,7 @@ var ListItem = function ListItem(item) {
       React.createElement(
         "div",
         { "class": "program-item-name" },
-        React.createElement(
+        item.category && React.createElement(
           "div",
           { "class": "program-item-name-category" },
           item.category
@@ -47,6 +63,38 @@ var ListItem = function ListItem(item) {
             item.title
           )
         ),
+        React.createElement(
+          "div",
+          { "class": "program-item-authors" },
+          item.speaker.split(/,\s*|\sand\s/).map(function (s, i) {
+            var twitterHandles = item.twitter.split(/,\s*|\sand\s/).map(function (h) {
+              return h.replace(/^@/, "");
+            });
+
+            return twitterHandles && twitterHandles[i] ? React.createElement(
+              "span",
+              null,
+              React.createElement(
+                "a",
+                {
+                  target: "_blank",
+                  href: "https://www.twitter.com/" + twitterHandles[i]
+                },
+                s
+              ),
+              i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
+            ) : React.createElement(
+              "span",
+              null,
+              s,
+              i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
+            );
+          })
+        )
+      ),
+      React.createElement(
+        "div",
+        { "class": "program-item-speaker" },
         item.venue && React.createElement(
           "div",
           { "class": "program-item-name-location" },
@@ -61,56 +109,11 @@ var ListItem = function ListItem(item) {
               "a",
               {
                 target: "_blank",
-                href: "" + (item.venue === "Tamedia" ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu" : "https://ethz.ch/en/campus/access/zentrum.html")
+                href: "" + (item.venue === "Tamedia HQ (TX Group)" ? "https://www.google.com/maps/place/TX+Group/@47.3727896,8.5297603,18z/data=!3m1!4b1!4m6!3m5!1s0x8afae1b3e767e801:0x34974205f9f19891!8m2!3d47.3727878!4d8.5310504!16s%2Fg%2F11fy26wx25?entry=ttu" : "https://ethz.ch/en/campus/access/zentrum.html")
               },
               item.venue
             ),
-            item.room ? ", " + item.room : ""
-          )
-        )
-      ),
-      React.createElement(
-        "div",
-        { "class": "program-item-speaker" },
-        item.speaker.split(/,\s*|\sand\s/).map(function (s, i) {
-          var twitterHandles = item.twitter.split(/,\s*|\sand\s/).map(function (h) {
-            return h.replace(/^@/, "");
-          });
-
-          return twitterHandles && twitterHandles[i] ? React.createElement(
-            "span",
-            null,
-            React.createElement(
-              "a",
-              {
-                target: "_blank",
-                href: "https://www.twitter.com/" + twitterHandles[i]
-              },
-              s
-            ),
-            i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
-          ) : React.createElement(
-            "span",
-            null,
-            s,
-            i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
-          );
-        }),
-        item.paper && React.createElement(
-          "div",
-          { "class": "program-item-name-location" },
-          React.createElement("img", {
-            style: { width: "25px", marginRight: "5px" },
-            src: "/img/paper-icon.svg"
-          }),
-          React.createElement(
-            "div",
-            null,
-            React.createElement(
-              "a",
-              { target: "_blank", href: "../papers/" + item.paper },
-              "Read the paper"
-            )
+            room ? room : ""
           )
         )
       )
@@ -136,7 +139,20 @@ var ListItem = function ListItem(item) {
         React.createElement(
           "div",
           { "class": "program-item-expand" },
-          open ? "Close" : "Read more"
+          open ? "⨯ Close" : "▼ Read more"
+        ),
+        item.paper && React.createElement(
+          "div",
+          { "class": "program-item-expand", style: { marginLeft: "0.5em" } },
+          React.createElement("img", {
+            style: { width: "15px", marginRight: "5px" },
+            src: "/img/paper-icon.svg"
+          }),
+          React.createElement(
+            "a",
+            { target: "_blank", href: "../papers/" + item.paper },
+            "Read the paper"
+          )
         )
       )
     )
