@@ -136,7 +136,7 @@ var ListItem = function ListItem(item) {
         React.createElement(
           "div",
           { "class": "program-item-expand" },
-          open ? "⨯ Close" : "▼ Read more"
+          open ? "Close" : "▼ Read more"
         ),
         item.paper && React.createElement(
           "div",

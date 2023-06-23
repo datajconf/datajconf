@@ -96,7 +96,7 @@ const ListItem = (item) => {
             class="program-item-expand-container"
           >
             <div class="program-item-expand">
-              {open ? "⨯ Close" : "▼ Read more"}
+              {open ? "Close" : "▼ Read more"}
             </div>
             {item.paper && (
               <div class="program-item-expand" style={{marginLeft: "0.5em"}}>
