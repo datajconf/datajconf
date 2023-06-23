@@ -189,11 +189,9 @@ var LikeButton = function LikeButton() {
         return Object.assign({}, item, {
           day: new Date(dt[2], dt[1] - 1, dt[0]),
           description: item.description.split("\n").map(function (i) {
-            return React.createElement(
-              "p",
-              null,
-              i
-            );
+            return React.createElement("p", { dangerouslySetInnerHTML: { __html: i.replace(/\[([^([]*)\]\(([^([ ]*)\)/g, function (a, b, c) {
+                  return "<a target=\"_blank\" href=" + c + ">" + b + "</a>";
+                }) } });
           })
         });
       });

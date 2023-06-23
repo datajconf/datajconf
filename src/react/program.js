@@ -144,7 +144,10 @@ const LikeButton = () => {
           return {
             ...item,
             day: new Date(dt[2], dt[1] - 1, dt[0]),
-            description: item.description.split("\n").map((i) => <p>{i}</p>),
+            description: item.description.split("\n").map((i) => <p dangerouslySetInnerHTML={{__html: i.replace(
+              /\[([^([]*)\]\(([^([ ]*)\)/g,
+              (a, b, c) => `<a target="_blank" href=${c}>${b}</a>`
+            )}} />),
           };
         });
         setItems(d);
