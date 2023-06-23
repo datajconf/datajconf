@@ -87,11 +87,7 @@ const ListItem = (item) => {
           <div
             class={`program-item-description-text ${open ? "open" : "close"}`}
           >
-            {item.description.replace(
-                      /\[([^([]*)\]\(([^([ ]*)\)/g,
-                      (a, b, c) =>
-                        `<a target="_blank" href="${c}">${b}</a>`
-                    )}
+            {item.description}
           </div>
           <div
             onClick={() => {

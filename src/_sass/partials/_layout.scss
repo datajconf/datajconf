@@ -353,6 +353,10 @@ header.header-page {
                 white-space: nowrap;
                 font-size: 0.85em;
                 justify-content: center;
+
+                a {
+                text-decoration: none;
+                }
             }
 
             .program-item-name-paper-link {

@@ -126,9 +126,7 @@ var ListItem = function ListItem(item) {
         {
           "class": "program-item-description-text " + (open ? "open" : "close")
         },
-        item.description.replace(/\[([^([]*)\]\(([^([ ]*)\)/g, function (a, b, c) {
-          return "<a target=\"_blank\" href=\"" + c + "\">" + b + "</a>";
-        })
+        item.description
       ),
       React.createElement(
         "div",
