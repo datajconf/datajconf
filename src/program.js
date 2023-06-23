@@ -83,12 +83,9 @@ var ListItem = function ListItem(item) {
                 s
               ),
               i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
-            ) : React.createElement(
-              "span",
-              null,
-              s,
-              i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
-            );
+            ) : React.createElement("span", { dangerouslySetInnerHTML: { __html: s.replace(/\[([^([]*)\]\(([^([ ]*)\)/g, function (a, b, c) {
+                  return "<a target=\"_blank\" href=" + c + ">" + b + "</a>";
+                }) + (i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : "") } });
           })
         )
       ),

@@ -48,12 +48,12 @@ const ListItem = (item) => {
                     : ""}
                 </span>
               ) : (
-                <span>
-                  {s}
-                  {i < item.speaker.split(/,\s*|\sand\s/).length - 1
-                    ? ", "
-                    : ""}
-                </span>
+                <span dangerouslySetInnerHTML={{__html: s.replace(
+                  /\[([^([]*)\]\(([^([ ]*)\)/g,
+                  (a, b, c) => `<a target="_blank" href=${c}>${b}</a>`
+                ) + (i < item.speaker.split(/,\s*|\sand\s/).length - 1
+                ? ", "
+                : "")}} />
               );
             })}
           </div>
