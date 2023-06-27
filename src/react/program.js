@@ -48,12 +48,18 @@ const ListItem = (item) => {
                     : ""}
                 </span>
               ) : (
-                <span dangerouslySetInnerHTML={{__html: s.replace(
-                  /\[([^([]*)\]\(([^([ ]*)\)/g,
-                  (a, b, c) => `<a target="_blank" href=${c}>${b}</a>`
-                ) + (i < item.speaker.split(/,\s*|\sand\s/).length - 1
-                ? ", "
-                : "")}} />
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      s.replace(
+                        /\[([^([]*)\]\(([^([ ]*)\)/g,
+                        (a, b, c) => `<a target="_blank" href=${c}>${b}</a>`
+                      ) +
+                      (i < item.speaker.split(/,\s*|\sand\s/).length - 1
+                        ? ", "
+                        : ""),
+                  }}
+                />
               );
             })}
           </div>
@@ -82,58 +88,63 @@ const ListItem = (item) => {
           )}
         </div>
       </div>
-      {item.description.length > 2 && (
-        <div class={`program-item-description`}>
-          <div
-            class={`program-item-description-text ${open ? "open" : "close"}`}
-          >
-            {item.description}
-          </div>
-          <div
-            onClick={() => {
-              setOpen(!open);
-            }}
-            class="program-item-expand-container"
-          >
-            <div class="program-item-expand">
-              {open ? "Close" : "▼ Read more"}
+      {(item.description.length > 2 ||
+        item.video) && (
+          <div class={`program-item-description`}>
+            <div
+              class={`program-item-description-text ${open ? "open" : "close"}`}
+            >
+              {item.description}
             </div>
-            {item.paper && (
-              <div class="program-item-expand" style={{marginLeft: "0.5em"}}>
-                <img
-                  style={{ width: "15px", marginRight: "5px" }}
-                  src={"/img/paper-icon.svg"}
-                />
+            <div class="program-item-expand-container">
+              {item.description.length > 2 && <div
+                onClick={() => {
+                  setOpen(!open);
+                }}
+                class="program-item-expand"
+              >
+                {open ? "Close" : "▼ Read more"}
+              </div>}
+              {item.paper && (
+                <div
+                  class="program-item-expand"
+                  style={{ marginLeft: "0.5em" }}
+                >
+                  <img
+                    style={{ width: "15px", marginRight: "5px" }}
+                    src={"/img/paper-icon.svg"}
+                  />
                   <a target="_blank" href={`../papers/${item.paper}`}>
                     Read the paper
                   </a>
-              </div>
-            )}
+                </div>
+              )}
+              {item.video && (
+                <div
+                  class="program-item-expand"
+                  style={{ marginLeft: "0.5em" }}
+                >
+                  <img
+                    style={{ width: "15px", marginRight: "5px" }}
+                    src={"/img/video-icon.svg"}
+                  />
+                  <a target="_blank" href={item.video}>
+                    Watch the video
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };
 
 const LikeButton = () => {
   const [items, setItems] = React.useState([]);
-  const [selectedDate, setSelectedDate] = React.useState(22);
+  const [selectedDate, setSelectedDate] = React.useState(23);
 
   React.useEffect(() => {
-    const today = new Date();
-
-    if (
-      today.getDate() >= 22 &&
-      today.getDate() < 25 &&
-      today.getMonth() + 1 === 6 &&
-      today.getFullYear() === 2023
-    ) {
-      setSelectedDate(today.getDate());
-    } else {
-      setSelectedDate(22);
-    }
-
     fetch(
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbfoHgabkIB0vzYf9zQcCDYaMzCt3LT_iHUDuCYENraqGASDQ5IRnKC28y9Hgjyv8aSxI0OwK5r1xV/pub?output=csv"
     )
@@ -144,10 +155,16 @@ const LikeButton = () => {
           return {
             ...item,
             day: new Date(dt[2], dt[1] - 1, dt[0]),
-            description: item.description.split("\n").map((i) => <p dangerouslySetInnerHTML={{__html: i.replace(
-              /\[([^([]*)\]\(([^([ ]*)\)/g,
-              (a, b, c) => `<a target="_blank" href=${c}>${b}</a>`
-            )}} />),
+            description: item.description.split("\n").map((i) => (
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: i.replace(
+                    /\[([^([]*)\]\(([^([ ]*)\)/g,
+                    (a, b, c) => `<a target="_blank" href=${c}>${b}</a>`
+                  ),
+                }}
+              />
+            )),
           };
         });
         setItems(d);

@@ -83,9 +83,13 @@ var ListItem = function ListItem(item) {
                 s
               ),
               i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : ""
-            ) : React.createElement("span", { dangerouslySetInnerHTML: { __html: s.replace(/\[([^([]*)\]\(([^([ ]*)\)/g, function (a, b, c) {
+            ) : React.createElement("span", {
+              dangerouslySetInnerHTML: {
+                __html: s.replace(/\[([^([]*)\]\(([^([ ]*)\)/g, function (a, b, c) {
                   return "<a target=\"_blank\" href=" + c + ">" + b + "</a>";
-                }) + (i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : "") } });
+                }) + (i < item.speaker.split(/,\s*|\sand\s/).length - 1 ? ", " : "")
+              }
+            });
           })
         )
       ),
@@ -115,7 +119,7 @@ var ListItem = function ListItem(item) {
         )
       )
     ),
-    item.description.length > 2 && React.createElement(
+    (item.description.length > 2 || item.video) && React.createElement(
       "div",
       { "class": "program-item-description" },
       React.createElement(
@@ -127,20 +131,23 @@ var ListItem = function ListItem(item) {
       ),
       React.createElement(
         "div",
-        {
-          onClick: function onClick() {
-            setOpen(!open);
-          },
-          "class": "program-item-expand-container"
-        },
-        React.createElement(
+        { "class": "program-item-expand-container" },
+        item.description.length > 2 && React.createElement(
           "div",
-          { "class": "program-item-expand" },
+          {
+            onClick: function onClick() {
+              setOpen(!open);
+            },
+            "class": "program-item-expand"
+          },
           open ? "Close" : "▼ Read more"
         ),
         item.paper && React.createElement(
           "div",
-          { "class": "program-item-expand", style: { marginLeft: "0.5em" } },
+          {
+            "class": "program-item-expand",
+            style: { marginLeft: "0.5em" }
+          },
           React.createElement("img", {
             style: { width: "15px", marginRight: "5px" },
             src: "/img/paper-icon.svg"
@@ -149,6 +156,22 @@ var ListItem = function ListItem(item) {
             "a",
             { target: "_blank", href: "../papers/" + item.paper },
             "Read the paper"
+          )
+        ),
+        item.video && React.createElement(
+          "div",
+          {
+            "class": "program-item-expand",
+            style: { marginLeft: "0.5em" }
+          },
+          React.createElement("img", {
+            style: { width: "15px", marginRight: "5px" },
+            src: "/img/video-icon.svg"
+          }),
+          React.createElement(
+            "a",
+            { target: "_blank", href: item.video },
+            "Watch the video"
           )
         )
       )
@@ -162,20 +185,12 @@ var LikeButton = function LikeButton() {
       items = _React$useState4[0],
       setItems = _React$useState4[1];
 
-  var _React$useState5 = React.useState(22),
+  var _React$useState5 = React.useState(23),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       selectedDate = _React$useState6[0],
       setSelectedDate = _React$useState6[1];
 
   React.useEffect(function () {
-    var today = new Date();
-
-    if (today.getDate() >= 22 && today.getDate() < 25 && today.getMonth() + 1 === 6 && today.getFullYear() === 2023) {
-      setSelectedDate(today.getDate());
-    } else {
-      setSelectedDate(22);
-    }
-
     fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRbfoHgabkIB0vzYf9zQcCDYaMzCt3LT_iHUDuCYENraqGASDQ5IRnKC28y9Hgjyv8aSxI0OwK5r1xV/pub?output=csv").then(function (response) {
       return response.text();
     }).then(function (data) {
@@ -186,9 +201,13 @@ var LikeButton = function LikeButton() {
         return Object.assign({}, item, {
           day: new Date(dt[2], dt[1] - 1, dt[0]),
           description: item.description.split("\n").map(function (i) {
-            return React.createElement("p", { dangerouslySetInnerHTML: { __html: i.replace(/\[([^([]*)\]\(([^([ ]*)\)/g, function (a, b, c) {
+            return React.createElement("p", {
+              dangerouslySetInnerHTML: {
+                __html: i.replace(/\[([^([]*)\]\(([^([ ]*)\)/g, function (a, b, c) {
                   return "<a target=\"_blank\" href=" + c + ">" + b + "</a>";
-                }) } });
+                })
+              }
+            });
           })
         });
       });
