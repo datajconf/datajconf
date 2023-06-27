@@ -327,9 +327,7 @@ header.header-page {
 
         .program-item-expand-container {
             grid-column: 4 / 11;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            display: block;
 
             @include media-query($extra-large-break) {
                 grid-column: 4 / 11;
@@ -353,6 +351,8 @@ header.header-page {
                 white-space: nowrap;
                 font-size: 0.85em;
                 justify-content: center;
+                margin-top: 0.5em;
+                margin-right: 0.2em;
 
                 a {
                 text-decoration: none;

@@ -413,9 +413,7 @@ header.header-page nav .logo {
 }
 .program-item .program-item-description .program-item-expand-container {
   grid-column: 4/11;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: block;
 }
 @media screen and (max-width: 1400px) {
   .program-item .program-item-description .program-item-expand-container {
@@ -442,6 +440,8 @@ header.header-page nav .logo {
   white-space: nowrap;
   font-size: 0.85em;
   justify-content: center;
+  margin-top: 0.5em;
+  margin-right: 0.2em;
 }
 .program-item .program-item-description .program-item-expand-container .program-item-expand a {
   text-decoration: none;

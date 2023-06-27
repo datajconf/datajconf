@@ -140,13 +140,16 @@ var ListItem = function ListItem(item) {
             },
             "class": "program-item-expand"
           },
-          open ? "Close" : "▼ Read more"
+          React.createElement("img", {
+            style: { width: "15px", marginRight: "5px" },
+            src: "/img/down-icon.svg"
+          }),
+          open ? "Close" : "Read more"
         ),
         item.paper && React.createElement(
           "div",
           {
-            "class": "program-item-expand",
-            style: { marginLeft: "0.5em" }
+            "class": "program-item-expand"
           },
           React.createElement("img", {
             style: { width: "15px", marginRight: "5px" },
@@ -161,8 +164,7 @@ var ListItem = function ListItem(item) {
         item.video && React.createElement(
           "div",
           {
-            "class": "program-item-expand",
-            style: { marginLeft: "0.5em" }
+            "class": "program-item-expand"
           },
           React.createElement("img", {
             style: { width: "15px", marginRight: "5px" },

@@ -103,12 +103,15 @@ const ListItem = (item) => {
                 }}
                 class="program-item-expand"
               >
-                {open ? "Close" : "▼ Read more"}
+                                  <img
+                    style={{ width: "15px", marginRight: "5px" }}
+                    src={"/img/down-icon.svg"}
+                  />
+                {open ? "Close" : "Read more"}
               </div>}
               {item.paper && (
                 <div
                   class="program-item-expand"
-                  style={{ marginLeft: "0.5em" }}
                 >
                   <img
                     style={{ width: "15px", marginRight: "5px" }}
@@ -122,7 +125,6 @@ const ListItem = (item) => {
               {item.video && (
                 <div
                   class="program-item-expand"
-                  style={{ marginLeft: "0.5em" }}
                 >
                   <img
                     style={{ width: "15px", marginRight: "5px" }}
