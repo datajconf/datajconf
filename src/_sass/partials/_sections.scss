@@ -9,7 +9,7 @@
 
 
     .overlay {
-        background-image: linear-gradient(rgba($dark-brand-main, 0.7), rgba($dark-brand-main, 0.5)), url("/img/cover/cover.jpg");
+        background-image: linear-gradient(rgba($dark-brand-main, 0.2), rgba($dark-brand-main, 0.5)), url("/img/cover/cover.jpg");
         background-color: $brand-main;
         background-size: cover;
         background-repeat: no-repeat;
@@ -88,13 +88,13 @@
 
             .logo {
                 align-self: center;
-                width: 25vw;
+                height: 12vh;
                 float: left;
             }
 
             @include media-query($medium-break) {
                 .logo {
-                    width: 300px;
+                    height: 10vh;
                     float: none;
                 }
             }
