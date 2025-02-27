@@ -242,8 +242,14 @@ ul.list-blocks{
         grid-column: 5/13;
     }
 
+
+
     a {
         color: $brand-secondary;
+
+        &.button {
+            color: $brand-main;
+        }
     }
 
     @include media-query($extra-large-break) {
