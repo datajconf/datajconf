@@ -88,13 +88,13 @@
 
             .logo {
                 align-self: center;
-                height: 12vh;
+                height: 10vh;
                 float: left;
             }
 
             @include media-query($medium-break) {
                 .logo {
-                    height: 10vh;
+                    height: 8vh;
                     float: none;
                 }
             }
