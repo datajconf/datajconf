@@ -101,7 +101,7 @@ var ListItem = function ListItem(item) {
           { "class": "program-item-name-location" },
           React.createElement("img", {
             style: { width: "25px", marginRight: "5px" },
-            src: "/img/location-icon.svg"
+            src: "../img/location-icon.svg"
           }),
           React.createElement(
             "div",
@@ -142,7 +142,7 @@ var ListItem = function ListItem(item) {
           },
           React.createElement("img", {
             style: { width: "15px", marginRight: "5px" },
-            src: "/img/down-icon.svg"
+            src: "../img/down-icon.svg"
           }),
           open ? "Close" : "Read more"
         ),
@@ -153,7 +153,7 @@ var ListItem = function ListItem(item) {
           },
           React.createElement("img", {
             style: { width: "15px", marginRight: "5px" },
-            src: "/img/paper-icon.svg"
+            src: "../img/paper-icon.svg"
           }),
           React.createElement(
             "a",
@@ -168,7 +168,7 @@ var ListItem = function ListItem(item) {
           },
           React.createElement("img", {
             style: { width: "15px", marginRight: "5px" },
-            src: "/img/video-icon.svg"
+            src: "../img/video-icon.svg"
           }),
           React.createElement(
             "a",
