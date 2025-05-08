@@ -436,6 +436,10 @@ ul.list-blocks{
             columns: 2;
         }
     }
+
+    li {
+        list-style: none;
+    }
 }
 
 #organization {
