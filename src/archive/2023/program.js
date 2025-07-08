@@ -101,7 +101,7 @@ var ListItem = function ListItem(item) {
           { "class": "program-item-name-location" },
           React.createElement("img", {
             style: { width: "25px", marginRight: "5px" },
-            src: "../img/location-icon.svg"
+            src: "img/location-icon.svg"
           }),
           React.createElement(
             "div",
@@ -157,7 +157,7 @@ var ListItem = function ListItem(item) {
           }),
           React.createElement(
             "a",
-            { target: "_blank", href: "../papers/" + item.paper },
+            { target: "_blank", href: "papers/" + item.paper },
             "Read the paper"
           )
         ),
