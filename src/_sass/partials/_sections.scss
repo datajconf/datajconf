@@ -691,3 +691,39 @@ footer {
     //     }
     // }
 }
+
+#schedule {
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: calc(2*$spacing-unit);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    thead th:nth-child(1) {
+        width: 15%;
+    }
+
+    tbody .break {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+
+    tbody td:nth-child(1) {
+        border-right: 1px solid black;
+        vertical-align: middle;
+    }
+
+    td span.title {
+        font-weight: 700;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: lighten($brand-secondary, 20%);
+    }
+}
