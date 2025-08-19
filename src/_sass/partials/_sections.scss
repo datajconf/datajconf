@@ -694,7 +694,7 @@ footer {
 
 #schedule {
     table {
-        table-layout: fixed;
+        table-layout: auto;
         width: 100%;
         border-collapse: collapse;
     }
@@ -703,10 +703,6 @@ footer {
         padding: calc(2*$spacing-unit);
         text-align: left;
         vertical-align: top;
-    }
-
-    thead th:nth-child(1) {
-        width: 15%;
     }
 
     tbody .break {
