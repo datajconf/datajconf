@@ -274,11 +274,20 @@ ul.list-blocks{
     }
 }
 
-.sponsors {
+.sponsors.academic-partners{
     img {
         mix-blend-mode: multiply;
         display: block;
-        max-width: 150px;
+        max-width: 200px;
+        margin-bottom: calc(2*$spacing-unit);
+    }
+}
+
+.sponsors.media-partners {
+    img {
+        mix-blend-mode: multiply;
+        display: inline;
+        max-height: 150px;
         margin-bottom: calc(2*$spacing-unit);
     }
 }
