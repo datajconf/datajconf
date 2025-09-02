@@ -280,6 +280,10 @@ ul.list-blocks{
         display: block;
         max-height: 120px;
         margin-bottom: calc(2*$spacing-unit);
+
+        @include media-query($medium-break) {
+            max-height: 80px;
+        }
     }
 }
 
@@ -289,6 +293,9 @@ ul.list-blocks{
         display: inline;
         max-height: 150px;
         margin-bottom: calc(2*$spacing-unit);
+    }
+    @include media-query($medium-break) {
+        max-height: 80px;
     }
 }
 
