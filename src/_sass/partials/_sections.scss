@@ -738,4 +738,9 @@ footer {
     tbody tr:nth-child(even) {
         background-color: lighten($brand-secondary, 20%);
     }
+
+    small {
+        font-size: $small-font-size;
+        font-weight: 700
+    }
 }
